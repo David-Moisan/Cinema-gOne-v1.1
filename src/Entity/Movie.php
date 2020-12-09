@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\MovieRepository;
 use Cocur\Slugify\Slugify;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=MovieRepository::class)
@@ -25,21 +26,27 @@ class Movie
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Regex("/^\w+/")
      */
     private $resume;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\Regex("/^\w+/")
      */
     private $synopsis;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Regex("/^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$/i")
      */
     private $ad_sortie;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\Url(
+     *    protocols = {"http", "https"}
+     * )
      */
     private $affiche;
 
