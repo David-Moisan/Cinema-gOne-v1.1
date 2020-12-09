@@ -1,4 +1,4 @@
-# Cinema-gOne
+# Cinema-gOne-v1.1
 
 <h1>I. Modèle de données</h1> 
 
