@@ -1,6 +1,6 @@
 {% extends "base.html.twig" %}
 
-{% block title 'Gérer la liste des films' %}
+{% block title 'Se connecter' %}
 
 {% block body %}
 <div class="container">
@@ -32,48 +32,27 @@
             <a class="p-2 text-dark" href="#">Genres</a>
         </nav>
     </div>
+    <hr>
 {#endNav#}
-    <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
-        <div class="col-md-6 px-0">
-            <h1 class="display-4 font-italic">Gérer la liste des films</h1>
-        </div>
-    </div>
-{#endJumbotron#}
 </div>
-<div class="container">
+<div class="container" style="background-color: #121416; padding: 1.5rem; color: white; border-radius: 10px;">
 
-    {% for message in app.flashes('success') %}
-        <div class="alert alert-success">
-            {{ message }}
+    {% if error %}
+        <div class="alert alert-danger">
+            {{ error.messageKey | trans(error.messagedata, 'security') }}
         </div>
-    {% endfor %}
+    {% endif %}
 
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Titre</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for movie in movies %}
-            <tr>
-                <td>{{movie.titre}}</td>
-                <td>
-                    <a href="{{ path('admin.movie.edit', {id: movie.id}) }}" class="btn btn-secondary">Éditer</a>
-                    <form method="POST" action="{{ path('admin.movie.delete', {id: movie.id}) }}" style="display: inline-block;" onsubmit="return confirm('Êtes vous vraiment sûr ?')">
-                        <input type="hidden" name="_method" value="DELETE">
-                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ movie.id) }}">
-                        <button class="btn btn-danger">Supprimer <i class="fa fa-trash"></i></button>
-                    </form>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
 
-    <div class="text-right">
-        <a href="{{ path('admin.movie.new')}}" class="btn btn-success">Créer un nouveau film</a>
-    </div>
+    <form action="{{ path('login')}}" method="POST">
+        <div class="form-group">
+            <label for="username">Nom d'utilisateur :</label>
+            <input type="text" id="username" name="_username" class="form-control" value="{{ last_username }}">
+            <label for="password">Mot de passe :</label>
+            <input type="password" id="password" name="_password" class="form-control">
+        </div>
+
+        <button class="btn btn-primary" type="submit">Se connecter</button>
+    </form>
 </div>
-{% endblock body %}
+{% endblock %}
