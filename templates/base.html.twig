@@ -193,40 +193,25 @@
         {#endJumbotron#}
             <h2 class="mb-2">Les derniers films</h2>
             <div class="row mb-2">
+                {% for movie in movies %}
                 <div class="col-md-6">
                     <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                         <div class="col p-4 d-flex flex-column position-static">
                             <div class="badge-container">
                                 <span class="badge badge-pill  badge-dark mb-2">attention BDD</span>{#Genre#}
                             </div>
-                            <h3 class="mb-0">Bla</h3>{#Titre#}
-                            <div class="mb-1 text-dark">12/02/2020</div>{#Année de sortie#}
+                            <h3 class="mb-0">{{movie.titre}}</h3>{#Titre#}
+                            <div class="mb-1 text-dark">{{movie.adsortie}}</div>{#Année de sortie#}
                             <div class="mb-1 text-muted">attention BDD</div>{#Acteurs#}
-                            <p class="card-text mb-auto">blabla</p>{#Résumé#}
-                            <a href="#}" class="stretched-link">Voir plus...</a>{#Lien vers la page unique#}
+                            <p class="card-text mb-auto">{{movie.resume}}</p>{#Résumé#}
+                            <a href="{{ path('movie.show', {id: movie.id, slug: movie.slug}) }}" class="stretched-link">Voir plus...</a>{#Lien vers la page unique#}
                         </div>
                         <div class="col-auto d-none d-lg-block">
-                            <img src="" alt="" class="bd-placeholder-img" width="200" height="250">
+                            <img src={{movie.affiche}} alt={{movie.titre}} class="bd-placeholder-img" width="200" height="250">
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                        <div class="col p-4 d-flex flex-column position-static">
-                            <div class="badge-container">
-                                <span class="badge badge-pill  badge-dark mb-2">attention BDD</span>{#Genre#}
-                            </div>
-                            <h3 class="mb-0">Bla</h3>{#Titre#}
-                            <div class="mb-1 text-dark">12/02/2020</div>{#Année de sortie#}
-                            <div class="mb-1 text-muted">attention BDD</div>{#Acteurs#}
-                            <p class="card-text mb-auto">blabla</p>{#Résumé#}
-                            <a href="#}" class="stretched-link">Voir plus...</a>{#Lien vers la page unique#}
-                        </div>
-                        <div class="col-auto d-none d-lg-block">
-                            <img src="" alt="" class="bd-placeholder-img" width="200" height="250">
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         {# endLastedMovies#}
         </div>
