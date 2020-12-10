@@ -2,7 +2,9 @@
 
 namespace App\Form;
 
+use App\Entity\Genre;
 use App\Entity\Movie;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -23,6 +25,10 @@ class MovieType extends AbstractType
             ->add('affiche')
             ->add('afficher', null, [
                 'label' => 'Ne pas afficher',
+            ])
+            ->add('genre', EntityType::class, [
+                'class' => Genre::class,
+                'choice_label' => 'nom',
             ])
         ;
     }

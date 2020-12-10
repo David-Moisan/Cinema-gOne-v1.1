@@ -55,6 +55,11 @@ class Movie
      */
     private $afficher = false;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Genre::class, inversedBy="movies")
+     */
+    private $genre;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -133,6 +138,18 @@ class Movie
     public function setAfficher(bool $afficher): self
     {
         $this->afficher = $afficher;
+
+        return $this;
+    }
+
+    public function getGenre(): ?Genre
+    {
+        return $this->genre;
+    }
+
+    public function setGenre(?Genre $genre): self
+    {
+        $this->genre = $genre;
 
         return $this;
     }

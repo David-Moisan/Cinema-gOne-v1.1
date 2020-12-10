@@ -53,12 +53,18 @@
             <tr>
                 <th>Titre</th>
                 <th>Actions</th>
+                <th>Genres</th>
             </tr>
         </thead>
         <tbody>
             {% for movie in movies %}
             <tr>
                 <td>{{movie.titre}}</td>
+                <td>
+                    <div class="badge-container">
+                        <span class="badge badge-pill  badge-dark mb-2">{{movie.genre.nom}}</span>{#Genre#}
+                    </div>
+                </td>
                 <td>
                     <a href="{{ path('admin.movie.edit', {id: movie.id}) }}" class="btn btn-secondary">Éditer</a>
                     <form method="POST" action="{{ path('admin.movie.delete', {id: movie.id}) }}" style="display: inline-block;" onsubmit="return confirm('Êtes vous vraiment sûr ?')">

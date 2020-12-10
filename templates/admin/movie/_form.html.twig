@@ -2,10 +2,11 @@
 <div class="row">
     <div class="col-md-4">{{form_row(form.titre)}}</div>
     <div class="col-md-4">{{form_row(form.ad_sortie)}}</div>
+    <div class="col-md-4">{{form_row(form.genre)}}</div>
+
 </div>
 <div class="row">
     <div class="col-md-8">{{form_row(form.resume)}}</div>
-    <div class="col-md-2">{{form_row(form.afficher)}}</div>
 </div>
 <div class="row">
     <div class="col">{{ form_row(form.affiche)}}</div>
@@ -13,6 +14,7 @@
 <div class="row">
     <div class="col">{{ form_row(form.synopsis)}}</div>
 </div>
+<div class="col-md-4">{{form_row(form.afficher)}}</div>
 {{ form_rest(form) }}
 <div class="text-right">
     <button class="btn btn-primary">{{button|default('Enregistrer')}}</button>

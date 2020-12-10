@@ -1,18 +1,13 @@
 {% extends "base.html.twig" %}
 
-{% block title 'Créer un nouveau film' %}
+{% block title 'Éditer le genre' %}
 
 {% block body %}
 <div class="container">
     <header class="blog-header py-3">
         <div class="row flex-nowrap justify-content-between align-items-center">
             <div class="col-4 pt-1">
-                {% if app.user %}
-                    <a href="{{path('logout')}}" class="btn btn-sm btn-danger">Se déconnecter</a>
-                {% endif %}
-                {% if not app.user %}
-                    <a class="btn btn-sm btn-outline-success" href="{{path('login')}}">Se connecter</a>
-                {% endif %}
+                <a class="btn btn-sm btn-outline-success" href="#">Se connecter</a>
             </div>
             <div class="col-4 text-center">
                 <a class="blog-header-logo text-dark" href="{{ path('home')}}">Cinéma gOne</a>
@@ -35,12 +30,12 @@
 {#endNav#}
     <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
         <div class="col-md-6 px-0">
-            <h1 class="display-4 font-italic">Créer un nouveau film</h1>
+            <h1 class="display-4 font-italic">Éditer le genre</h1>
         </div>
     </div>
 {#endJumbotron#}
 </div>
-<div class="container" style="background-color: #343A40; padding: 1.5rem; color: white; border-radius: 10px;">
-    {{ include ('admin/movie/_form.html.twig', {button: 'Créer'}) }}
+<div class="container mt-4" style="background-color:#343A40; padding: 1.5rem; color: white; border-radius: 10px;">
+    {{ include ('admin/genre/_form.html.twig', {button: 'Éditer'}) }}
 </div>
 {% endblock body %}
