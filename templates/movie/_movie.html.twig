@@ -1,0 +1,17 @@
+<div class="col-md-6">
+    <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+            <div class="badge-container">
+                <span class="badge badge-pill  badge-dark mb-2">attention BDD</span>{#Genre#}
+            </div>
+            <h3 class="mb-0">{{movie.titre}}</h3>{#Titre#}
+            <div class="mb-1 text-dark">{{movie.adsortie}}</div>{#Année de sortie#}
+            <div class="mb-1 text-muted">attention BDD</div>{#Acteurs#}
+            <p class="card-text mb-auto">{{movie.resume}}</p>{#Résumé#}
+            <a href="{{ path('movie.show', {id: movie.id, slug: movie.slug}) }}" class="stretched-link">Voir plus...</a>{#Lien vers la page unique#}
+        </div>
+        <div class="col-auto d-none d-lg-block">
+            <img src={{movie.affiche}} alt={{movie.titre}} class="bd-placeholder-img" width="200" height="250">
+        </div>
+    </div>
+</div>

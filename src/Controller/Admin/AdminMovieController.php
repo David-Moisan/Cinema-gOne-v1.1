@@ -103,12 +103,12 @@ class AdminMovieController extends AbstractController
      */
     public function delete(Movie $movie, Request $request)
     {
-        if ($this->isCsrfTokenValid('delte'.$movie->getId(), $request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete'.$movie->getId(), $request->get('_token'))) {
             $this->em->remove($movie);
             $this->em->flush();
             $this->addFlash('success', 'Film supprimer avec succès');
-
-            return $this->redirectToRoute('admin.movie.index');
         }
+
+        return $this->redirectToRoute('admin.movie.index');
     }
 }

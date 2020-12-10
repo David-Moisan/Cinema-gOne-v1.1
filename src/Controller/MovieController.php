@@ -36,7 +36,11 @@ class MovieController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('movie/index.html.twig');
+        $movies = $this->repository->findAllVisible();
+
+        return $this->render('movie/index.html.twig', [
+            'movies' => $movies,
+        ]);
     }
 
     /**
