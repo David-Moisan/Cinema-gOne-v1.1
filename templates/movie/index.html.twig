@@ -46,5 +46,8 @@
             {% include "movie/_movie.html.twig" %}
         {% endfor %}
     </div>
+    <div class="pagination">
+        {{ knp_pagination_render(movies) }}
+    </div>
 </div>
 {% endblock %}

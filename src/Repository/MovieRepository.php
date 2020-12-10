@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Movie;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -23,13 +24,12 @@ class MovieRepository extends ServiceEntityRepository
     /**
      * Méthode pour trouver tous les films qui sont visibles.
      *
-     * @return Movie[]
+     * @return Query
      */
-    public function findAllVisible(): array
+    public function findAllVisible(): Query
     {
         return $this->findVisibleQuery()
             ->getQuery()
-            ->getResult()
         ;
     }
 
