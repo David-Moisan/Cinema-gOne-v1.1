@@ -40,6 +40,11 @@
     </div>
 {#endJumbotron#}
 </div>
+<div class="container mb-3 text-right">
+    <a href="{{path('admin.movie.index')}}" class="btn btn-secondary">Films</a>
+    <a href="{{path('admin.genre.index')}}" class="btn btn-dark">Genre</a>
+    <a href="#" class="btn btn-dark">Acteurs</a>
+</div>
 <div class="container">
 
     {% for message in app.flashes('success') %}
