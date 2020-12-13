@@ -20,6 +20,7 @@ class MovieSearchType extends AbstractType
                     'placeholder' => 'Rechercher par nom',
                 ],
             ])
+            //->add('acteur')
         ;
     }
 

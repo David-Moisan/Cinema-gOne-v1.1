@@ -57,8 +57,8 @@
         <thead>
             <tr>
                 <th>Titre</th>
-                <th>Actions</th>
                 <th>Genres</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -85,6 +85,9 @@
 
     <div class="text-right">
         <a href="{{ path('admin.movie.new')}}" class="btn btn-success">Créer un nouveau film</a>
+    </div>
+    <div class="pagination">
+        {{ knp_pagination_render(movies) }}
     </div>
 </div>
 {% endblock body %}

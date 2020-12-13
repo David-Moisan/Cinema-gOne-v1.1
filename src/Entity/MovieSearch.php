@@ -8,7 +8,10 @@ class MovieSearch
 {
     /**
      * Propriété rechercheNom.
+     *
      * @Assert\Regex("/^\w+/")
+     * @Assert\Length(min=2, max=155)
+     *
      * @var string|null
      */
     private $rechercherNom;

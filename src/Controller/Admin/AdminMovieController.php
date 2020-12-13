@@ -6,6 +6,7 @@ use App\Entity\Movie;
 use App\Form\MovieType;
 use App\Repository\MovieRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -35,9 +36,12 @@ class AdminMovieController extends AbstractController
      *
      * @return void
      */
-    public function index()
+    public function index(PaginatorInterface $paginator, Request $request)
     {
-        $movies = $this->repository->findAll();
+        $movies = $paginator->paginate($this->repository->findAll(),
+            $request->query->getInt('page', 1),
+            5
+        );
 
         return $this->render('admin/movie/index.html.twig', compact('movies'));
     }
