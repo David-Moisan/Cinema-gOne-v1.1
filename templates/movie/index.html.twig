@@ -37,6 +37,20 @@
         <div class="col-md-6 px-0">
             <h1 class="display-4 font-italic">Tous les films</h1>
         </div>
+        <div class="container mt-4">
+            {{form_start(form) }}
+            <div class="form-row align-items-end">
+                <div class="col-md-8">
+                    {{ form_row(form.rechercherNom)}}
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <button class="btn btn-secondary">Rechercher</button>
+                    </div>
+                </div>
+            </div>
+            {{form_end(form) }}
+        </div>
     </div>
 {#endJumbotron#}
 </div>

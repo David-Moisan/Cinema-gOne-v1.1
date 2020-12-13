@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Movie;
+use App\Entity\MovieSearch;
+use App\Form\MovieSearchType;
 use App\Repository\MovieRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
@@ -38,13 +40,17 @@ class MovieController extends AbstractController
      */
     public function index(PaginatorInterface $paginator, Request $request): Response
     {
-        $movies = $paginator->paginate($this->repository->findAllVisible(),
+        $search = new MovieSearch();
+        $form = $this->createForm(MovieSearchType::class, $search);
+        $form->handleRequest($request);
+        $movies = $paginator->paginate($this->repository->findAllVisible($search),
             $request->query->getInt('page', 1),
             10
         );
 
         return $this->render('movie/index.html.twig', [
             'movies' => $movies,
+            'form' => $form->createView(),
         ]);
     }
 

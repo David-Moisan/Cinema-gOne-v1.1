@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Movie;
+use App\Entity\MovieSearch;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Query;
 use Doctrine\ORM\QueryBuilder;
@@ -26,11 +27,17 @@ class MovieRepository extends ServiceEntityRepository
      *
      * @return Query
      */
-    public function findAllVisible(): Query
+    public function findAllVisible(MovieSearch $search): Query
     {
-        return $this->findVisibleQuery()
-            ->getQuery()
-        ;
+        $query = $this->findVisibleQuery();
+
+        if($search->getRechercherNom()){
+            $query = $query
+                ->where('m.titre = :rechercherNom')
+                ->setParameter('rechercherNom', $search->getRechercherNom());
+        }
+
+        return $query->getQuery();
     }
 
     /**
