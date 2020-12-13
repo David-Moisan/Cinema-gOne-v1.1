@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\MovieRepository;
 use Cocur\Slugify\Slugify;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -59,6 +61,16 @@ class Movie
      * @ORM\ManyToOne(targetEntity=Genre::class, inversedBy="movies")
      */
     private $genre;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Actor::class, inversedBy="movies")
+     */
+    private $actors;
+
+    public function __construct()
+    {
+        $this->actors = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -150,6 +162,33 @@ class Movie
     public function setGenre(?Genre $genre): self
     {
         $this->genre = $genre;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Actor[]
+     */
+    public function getActors(): Collection
+    {
+        return $this->actors;
+    }
+
+    public function addActor(Actor $actor): self
+    {
+        if (!$this->actors->contains($actor)) {
+            $this->actors[] = $actor;
+            $actor->addMovie($this);
+        }
+
+        return $this;
+    }
+
+    public function removeActor(Actor $actor): self
+    {
+        if ($this->actors->removeElement($actor)) {
+            $actor->removeMovie($this);
+        }
 
         return $this;
     }

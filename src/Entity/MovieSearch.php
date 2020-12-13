@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class MovieSearch
@@ -15,6 +16,18 @@ class MovieSearch
      * @var string|null
      */
     private $rechercherNom;
+
+    /**
+     * Propriété actors.
+     *
+     * @var ArrayCollection
+     */
+    private $actors;
+
+    public function __construct()
+    {
+        $this->actors = new ArrayCollection();
+    }
 
     /**
      * Getter pour RechercheNom.
@@ -36,6 +49,26 @@ class MovieSearch
         $this->rechercherNom = $rechercherNom;
 
         return $this;
+    }
+
+    /**
+     * Getters pour Actors.
+     *
+     * @return ArrayCollection
+     */
+    public function getActors(): ArrayCollection
+    {
+        return $this->actors;
+    }
+
+    /**
+     * Setters pour Actors.
+     *
+     * @return void
+     */
+    public function setActors(ArrayCollection $actors): void
+    {
+        $this->actors = $actors;
     }
 
     //private $maVariableDeRecherche;

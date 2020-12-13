@@ -24,17 +24,25 @@ class MovieRepository extends ServiceEntityRepository
 
     /**
      * Méthode pour trouver tous les films qui sont visibles.
-     *
-     * @return Query
      */
     public function findAllVisible(MovieSearch $search): Query
     {
         $query = $this->findVisibleQuery();
 
-        if($search->getRechercherNom()){
+        if ($search->getRechercherNom()) {
             $query = $query
-                ->where('m.titre = :rechercherNom')
+                ->andWhere('m.titre = :rechercherNom')
                 ->setParameter('rechercherNom', $search->getRechercherNom());
+        }
+
+        if ($search->getActors()->count() > 0) {
+            $k = 0;
+            foreach ($search->getActors() as $actor) {
+                ++$k;
+                $query = $query
+                    ->andWhere(":actor$k MEMBER OF m.actors")
+                    ->setParameter("actor$k", $actor);
+            }
         }
 
         return $query->getQuery();

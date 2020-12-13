@@ -1,6 +1,6 @@
 {% extends "base.html.twig" %}
 
-{% block title 'Gérer la liste des genres de film' %}
+{% block title 'Gérer la liste des acteurs' %}
 
 {% block body %}
 <div class="container">
@@ -33,7 +33,7 @@
 {#endNav#}
     <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
         <div class="col-md-6 px-0">
-            <h1 class="display-4 font-italic">Gérer la liste des genres de film</h1>
+            <h1 class="display-4 font-italic">Gérer la liste des acteurs</h1>
         </div>
     </div>
 {#endJumbotron#}
@@ -54,19 +54,21 @@
     <table class="table table-striped">
         <thead>
             <tr>
+                <th>Prénom</th>
                 <th>Nom</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-            {% for genre in genres %}
+            {% for actor in actors %}
             <tr>
-                <td>{{genre.nom}}</td>
+                <td>{{actor.prenom}}</td>
+                <td>{{actor.nom}}</td>
                 <td>
-                    <a href="{{ path('admin.genre.edit', {id: genre.id}) }}" class="btn btn-secondary">Éditer</a>
-                    <form method="POST" action="{{ path('admin.genre.delete', {id: genre.id}) }}" style="display: inline-block;" onsubmit="return confirm('Êtes vous vraiment sûr ?')">
+                    <a href="{{ path('admin.actor.edit', {id: actor.id}) }}" class="btn btn-secondary">Éditer</a>
+                    <form method="POST" action="{{ path('admin.actor.delete', {id: actor.id}) }}" style="display: inline-block;" onsubmit="return confirm('Êtes vous vraiment sûr ?')">
                         <input type="hidden" name="_method" value="DELETE">
-                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ genre.id) }}">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ actor.id) }}">
                         <button class="btn btn-danger">Supprimer <i class="fa fa-trash"></i></button>
                     </form>
                 </td>
@@ -76,7 +78,7 @@
     </table>
 
     <div class="text-right">
-        <a href="{{ path('admin.genre.new')}}" class="btn btn-success">Créer un nouveau genre</a>
+        <a href="{{ path('admin.actor.new')}}" class="btn btn-success">Créer un nouvel acteur</a>
     </div>
 </div>
 {% endblock body %}
