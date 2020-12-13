@@ -1,6 +1,6 @@
 {% extends "base.html.twig" %}
 
-{% block title 'Gérer la liste des genres de film' %}
+{% block title 'Liste de tous les acteurs' %}
 
 {% block body %}
 <div class="container">
@@ -35,50 +35,8 @@
 {#endNav#}
     <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
         <div class="col-md-6 px-0">
-            <h1 class="display-4 font-italic">Gérer la liste des genres de film</h1>
+            <h1 class="display-4 font-italic">Tous les acteurs</h1>
         </div>
     </div>
 {#endJumbotron#}
-</div>
-<div class="container mb-3 text-right">
-    <a href="{{path('admin.movie.index')}}" class="btn btn-secondary">Gérer les films</a>
-    <a href="{{path('admin.genre.index')}}" class="btn btn-dark">Gérer les genres</a>
-    <a href="#" class="btn btn-dark">Acteurs</a>
-</div>
-<div class="container">
-
-    {% for message in app.flashes('success') %}
-        <div class="alert alert-success">
-            {{ message }}
-        </div>
-    {% endfor %}
-
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Nom</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for genre in genres %}
-            <tr>
-                <td>{{genre.nom}}</td>
-                <td>
-                    <a href="{{ path('admin.genre.edit', {id: genre.id}) }}" class="btn btn-secondary">Éditer</a>
-                    <form method="POST" action="{{ path('admin.genre.delete', {id: genre.id}) }}" style="display: inline-block;" onsubmit="return confirm('Êtes vous vraiment sûr ?')">
-                        <input type="hidden" name="_method" value="DELETE">
-                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ genre.id) }}">
-                        <button class="btn btn-danger">Supprimer <i class="fa fa-trash"></i></button>
-                    </form>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-
-    <div class="text-right">
-        <a href="{{ path('admin.genre.new')}}" class="btn btn-success">Créer un nouveau genre</a>
-    </div>
-</div>
 {% endblock body %}

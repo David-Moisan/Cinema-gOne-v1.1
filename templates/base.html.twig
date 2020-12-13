@@ -184,7 +184,7 @@
             <div class="nav-scroller py-1 mb-2">
                 <nav class="nav d-flex justify-content-center" style="font-size: 1.5em; margin:0;">
                     <a class="p-2 text-dark" href="{{ path('movie.index')}}">Films</a>
-                    <a class="p-2 text-dark" href="#">Acteurs</a>
+                    <a class="p-2 text-dark" href="{{ path('actor.index')}}">Acteurs</a>
                     <a class="p-2 text-dark" href="#">Genres</a>
                 </nav>
             </div>
@@ -193,7 +193,7 @@
                 <div class="col-md-6 px-0">
                     <h1 class="display-4 font-italic">Cela n'a jamais été aussi simple...</h1>
                     <p class="lead my-3">Vous souhaitez trouver un film pour ce soir ?!</p>
-                    <p class="lead mb-0"><a href="#" class="text-white font-weight-bold">Voir la liste...</a></p>
+                    <p class="lead mb-0"><a href="{{ path('movie.index')}}" class="text-white font-weight-bold">Voir la liste...</a></p>
                 </div>
             </div>
         {#endJumbotron#}
