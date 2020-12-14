@@ -1,9 +1,11 @@
 {% extends "base.html.twig" %}
 
-{% block title 'Créer un nouveau genre de film' %}
+{% block title actor.nom %}
+
 
 {% block body %}
 <div class="container">
+
     <header class="blog-header py-3">
         <div class="row flex-nowrap justify-content-between align-items-center">
             <div class="col-4 pt-1">
@@ -30,15 +32,34 @@
             <a class="p-2 text-dark" href="#">Genres</a>
         </nav>
     </div>
+    <hr>
 {#endNav#}
-    <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
-        <div class="col-md-6 px-0">
-            <h1 class="display-4 font-italic">Créer un nouveau genre de film</h1>
+</div>
+<div class="jumbotron" style="height: 525px; background-color: #212529;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6" style="margin-top: -10.5px;">
+                <img src={{actor.photo}} alt={{actor.nom}} style="border-radius: 10px;">
+            </div>
+            <div class="col-md-4" style="color: white;">
+                <h1 class="text-center">{{actor.prenom}} {{actor.nom}} </h1>
+                <h2 class="text-center text-muted">{{actor.datedenaissance}}</h2>
+            </div>
         </div>
     </div>
-{#endJumbotron#}
 </div>
-<div class="container" style="background-color: #343A40; padding: 1.5rem; color: white; border-radius: 10px;">
-    {{ include ('admin/genre/_form.html.twig', {button: 'Créer'}) }}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h2>Infos techniques :</h2>
+            <table class="table table-striped" style="margin-top: 15px;">
+                <tr>
+                    <td>Films</td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </div>
 </div>
 {% endblock body %}
+

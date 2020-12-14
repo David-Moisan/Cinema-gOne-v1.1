@@ -1,6 +1,6 @@
 {% extends "base.html.twig" %}
 
-{% block title 'Créer un nouveau genre de film' %}
+{% block title 'Tous les acteurs' %}
 
 {% block body %}
 <div class="container">
@@ -33,12 +33,45 @@
 {#endNav#}
     <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
         <div class="col-md-6 px-0">
-            <h1 class="display-4 font-italic">Créer un nouveau genre de film</h1>
+            <h1 class="display-4 font-italic">Tous les acteur</h1>
         </div>
+        {#
+            <div class="container mt-4">
+                {{form_start(form) }}
+                <div class="form-row align-items-end">
+                    <div class="col-md-4">
+                        <div class="form-group" style="height: 38px;">
+                            {{ form_row(form.rechercherNom)}}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            {{form_row(form.actors)}}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <button class="btn btn-secondary">Rechercher <i class="fa fa-search"></i></button>
+                        </div>
+                    </div>
+                </div>
+                {{form_end(form) }}
+            </div>
+            #}
     </div>
 {#endJumbotron#}
 </div>
-<div class="container" style="background-color: #343A40; padding: 1.5rem; color: white; border-radius: 10px;">
-    {{ include ('admin/genre/_form.html.twig', {button: 'Créer'}) }}
+<div class="container">
+    <div class="row">
+        {% for actor in actors %}
+            {% include "actor/_actor.html.twig" %}
+        {% endfor %}
+
+    </div>
+    {#
+    <div class="pagination">
+        {{ knp_pagination_render(movies) }}
+    </div>
+    #}
 </div>
-{% endblock body %}
+{% endblock %}

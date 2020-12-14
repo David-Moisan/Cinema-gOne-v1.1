@@ -1,0 +1,13 @@
+<div class="col-md-6">
+    <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+            <h3 class="mb-0">{{actor.prenom}} {{actor.nom}}</h3>{#Nom + Prenom#}
+            <div class="mb-1 text-dark">{{actor.datedenaissance}}</div>{#Date de naissance#}
+            <div class="mb-1 text-muted">attention BDD</div>{#Films#}
+            <a href="{{ path('actor.show', {id: actor.id}) }}" class="stretched-link">Voir plus...</a>{#Lien vers la page unique#}
+        </div>
+        <div class="col-auto d-none d-lg-block">
+            <img src={{actor.photo}} alt={{actor.nom}} class="bd-placeholder-img" width="200" height="250">
+        </div>
+    </div>
+</div>
