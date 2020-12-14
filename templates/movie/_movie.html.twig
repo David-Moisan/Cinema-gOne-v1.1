@@ -6,7 +6,7 @@
             </div>
             <h3 class="mb-0">{{movie.titre}}</h3>{#Titre#}
             <div class="mb-1 text-dark">{{movie.adsortie}}</div>{#Année de sortie#}
-            <div class="mb-1 text-muted">attention BDD</div>{#Acteurs#}
+            <div class="mb-1 text-muted"></div>{#Acteurs#}
             <p class="card-text mb-auto">{{movie.resume}}</p>{#Résumé#}
             <a href="{{ path('movie.show', {id: movie.id, slug: movie.slug}) }}" class="stretched-link">Voir plus...</a>{#Lien vers la page unique#}
         </div>
