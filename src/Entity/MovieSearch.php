@@ -15,7 +15,14 @@ class MovieSearch
      *
      * @var string|null
      */
-    private $rechercherNom;
+    /*private $rechercherNom;*/
+
+    /**
+     * Propriété genres.
+     *
+     * @var ArrayCollection
+     */
+    private $genres;
 
     /**
      * Propriété actors.
@@ -27,6 +34,7 @@ class MovieSearch
     public function __construct()
     {
         $this->actors = new ArrayCollection();
+        $this->genres = new ArrayCollection();
     }
 
     /**
@@ -34,22 +42,25 @@ class MovieSearch
      *
      * @return string|null
      */
+    /*
     public function getRechercherNom(): ?string
     {
         return $this->rechercherNom;
-    }
+    }*/
 
     /**
      * Setters pour RechercheNom.
      *
      * @return MovieSearch
      */
+    /*
     public function setRechercherNom(string $rechercherNom): MovieSearch
     {
         $this->rechercherNom = $rechercherNom;
 
         return $this;
     }
+    */
 
     /**
      * Getters pour Actors.
@@ -69,6 +80,26 @@ class MovieSearch
     public function setActors(ArrayCollection $actors): void
     {
         $this->actors = $actors;
+    }
+
+    /**
+     * Getters pour Genres.
+     *
+     * @return ArrayCollection
+     */
+    public function getGenres(): ?ArrayCollection
+    {
+        return $this->genres;
+    }
+
+    /**
+     * Setters pour Genres.
+     *
+     * @return void
+     */
+    public function setGenres(ArrayCollection $genres): void
+    {
+        $this->genres = $genres;
     }
 
     //private $maVariableDeRecherche;

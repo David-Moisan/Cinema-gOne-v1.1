@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Actor;
+use App\Entity\Genre;
 use App\Entity\MovieSearch;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -15,13 +16,13 @@ class MovieSearchType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('rechercherNom', TextareaType::class, [
-                'required' => false,
-                'label' => false,
-                'attr' => [
-                    'placeholder' => 'Rechercher par nom',
-                ],
-            ])
+            //->add('rechercherNom', TextareaType::class, [
+              //  'required' => false,
+                //'label' => false,
+                //'attr' => [
+                //    'placeholder' => 'Rechercher par nom',
+                //],
+            //])
             ->add('actors', EntityType::class, [
                 'required' => false,
                 'label' => false,
@@ -30,6 +31,16 @@ class MovieSearchType extends AbstractType
                 'multiple' => true,
                 'attr' => [
                     'placeholder' => 'Rechercher par acteur',
+                ],
+            ])
+            ->add('genres', EntityType::class, [
+                'required' => false,
+                'label' => false,
+                'class' => Genre::class,
+                'multiple' => true,
+                'choice_label' => 'nom',
+                'attr' => [
+                    'placeholder' => 'Rechercher par genres',
                 ],
             ])
         ;

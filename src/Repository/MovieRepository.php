@@ -29,11 +29,11 @@ class MovieRepository extends ServiceEntityRepository
     {
         $query = $this->findVisibleQuery();
 
-        if ($search->getRechercherNom()) {
+        /*if ($search->getRechercherNom()) {
             $query = $query
                 ->andWhere('m.titre = :rechercherNom')
                 ->setParameter('rechercherNom', $search->getRechercherNom());
-        }
+        }*/
 
         if ($search->getActors()->count() > 0) {
             $k = 0;
@@ -43,6 +43,19 @@ class MovieRepository extends ServiceEntityRepository
                     ->andWhere(":actor$k MEMBER OF m.actors")
                     ->setParameter("actor$k", $actor);
             }
+        }
+
+        if ($search->getGenres()->count() > 0) {
+            $i = 0;
+            $orX = $query->expr()->orX();
+
+            foreach ($search->getGenres() as $genres) {
+                ++$i;
+                $orX->add("m.genre = :genres$i");
+                $query = $query->setParameter("genres$i", $genres);
+            }
+
+            $query->andWhere($orX);
         }
 
         return $query->getQuery();
