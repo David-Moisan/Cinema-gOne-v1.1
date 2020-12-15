@@ -54,7 +54,13 @@
             <table class="table table-striped" style="margin-top: 15px;">
                 <tr>
                     <td>Films</td>
-                    <td></td>
+                    <td>
+                        {% for movie in actor.movies %}
+                            <a href="{{ path('movie.show', {id: movie.id, slug: movie.slug}) }}" style="text-decoration: none;">
+                                <div class="mb-1 text-dark">{{movie.titre}}</div>{#Acteurs comment faire la liaison avec movie?#}
+                            </a>
+                        {% endfor %}
+                    </td>
                 </tr>
             </table>
         </div>

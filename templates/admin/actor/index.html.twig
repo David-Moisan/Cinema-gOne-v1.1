@@ -79,5 +79,8 @@
     <div class="text-right">
         <a href="{{ path('admin.actor.new')}}" class="btn btn-success">Créer un nouvel acteur</a>
     </div>
+    <div class="pagination">
+        {{ knp_pagination_render(actors) }}
+    </div>
 </div>
 {% endblock body %}

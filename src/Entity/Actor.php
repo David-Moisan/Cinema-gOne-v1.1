@@ -51,7 +51,7 @@ class Actor
 
     public function __construct()
     {
-        $this->movies = new ArrayCollection();
+        $this->movies = new ArrayCollection();      
     }
 
     public function getId(): ?int

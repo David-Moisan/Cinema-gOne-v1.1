@@ -61,7 +61,13 @@
                 </tr>
                 <tr>
                     <td>Acteurs</td>
-                    <td></td>
+                    <td>
+                        {% for actor in movie.actors %}
+                            <a href="{{ path('actor.show', {id: actor.id}) }}" style="text-decoration: none;">
+                                <div class="mb-1 text-muted">{{actor.prenom}} {{actor.nom}}</div>{#Acteurs comment faire la liaison avec movie?#}
+                            </a>
+                        {% endfor %}
+                    </td>
                 </tr>
                 <tr>
                     <td>Jours de sortie</td>

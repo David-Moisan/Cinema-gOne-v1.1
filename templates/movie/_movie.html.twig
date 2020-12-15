@@ -2,11 +2,13 @@
     <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
         <div class="col p-4 d-flex flex-column position-static">
             <div class="badge-container">
-                <span class="badge badge-pill  badge-dark mb-2">{{movie.genre.nom}}</span>{#Genre#}
+                <span class="badge badge-pill badge-dark mb-2">{{movie.genre.nom}}</span>{#Genre#}
             </div>
             <h3 class="mb-0">{{movie.titre}}</h3>{#Titre#}
             <div class="mb-1 text-dark">{{movie.adsortie}}</div>{#Année de sortie#}
-            <div class="mb-1 text-muted"></div>{#Acteurs#}
+            {% for actor in movie.actors %}
+                        <div class="mb-1 text-muted">{{actor.prenom}} {{actor.nom}}</div>{#Acteurs comment faire la liaison avec movie?#}
+            {% endfor %}
             <p class="card-text mb-auto">{{movie.resume}}</p>{#Résumé#}
             <a href="{{ path('movie.show', {id: movie.id, slug: movie.slug}) }}" class="stretched-link">Voir plus...</a>{#Lien vers la page unique#}
         </div>
