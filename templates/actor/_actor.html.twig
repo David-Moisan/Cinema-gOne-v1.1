@@ -3,6 +3,9 @@
         <div class="col p-4 d-flex flex-column position-static">
             <h3 class="mb-0">{{actor.prenom}} {{actor.nom}}</h3>{#Nom + Prenom#}
             <div class="mb-1 text-dark">{{actor.datedenaissance}}</div>{#Date de naissance#}
+            {% if actor.datedemort == true %}
+            <div class="mb-1 text-dark">✟ {{actor.datedemort}}</div>
+            {% endif %}
             {% for movie in actor.movies %}
                 <div class="mb-1 text-muted">{{movie.titre}}</div>{#Acteurs comment faire la liaison avec movie?#}
             {% endfor %}

@@ -4,7 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Actor;
 use App\Repository\ActorRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -27,9 +29,12 @@ class ActorController extends AbstractController
      *
      * @return Response
      */
-    public function index(): Response
+    public function index(PaginatorInterface $paginator, Request $request): Response
     {
-        $actors = $this->repository->findAll();
+        $actors = $paginator->paginate($this->repository->findAll(),
+            $request->query->getInt('page', 1),
+            10
+        );
 
         return $this->render('actor/index.html.twig', [
             'actors' => $actors,
