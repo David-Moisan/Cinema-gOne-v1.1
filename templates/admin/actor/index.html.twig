@@ -65,11 +65,13 @@
                 <td>{{actor.nom}}</td>
                 <td>
                     <a href="{{ path('admin.actor.edit', {id: actor.id}) }}" class="btn btn-secondary">Éditer</a>
+                    {% if actor.movies|length == 0 %}
                     <form method="POST" action="{{ path('admin.actor.delete', {id: actor.id}) }}" style="display: inline-block;" onsubmit="return confirm('Êtes vous vraiment sûr ?')">
                         <input type="hidden" name="_method" value="DELETE">
                         <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ actor.id) }}">
                         <button class="btn btn-danger">Supprimer <i class="fa fa-trash"></i></button>
                     </form>
+                    {% endif %}
                 </td>
             </tr>
             {% endfor %}
