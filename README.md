@@ -59,3 +59,7 @@ de chaque film)</li>
   <li>Suppression (possible uniquement si le genre n’est lié à aucun film)</li>
 </ul>
 
+## Résultat du projet
+
+<img align="center" src="gOne.png" />
+
